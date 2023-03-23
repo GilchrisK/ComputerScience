@@ -1,0 +1,33 @@
+If you have admin rights you can create a new
+if you dont have admin files then you cant create a new.
+
+
+When creating a Login Demo, you have to make sure you use #show and #hide because there would be multiple tabs open.
+This program only happens when its event driven.
+
+
+Solution - You have to destroy the previous window before you open a new window.
+            Ths is so that there arent multiple tabs on the screen which would make it confusing for the programmer.
+
+            - When using a function call the parameter by a different name therefore you will not get confused.
+
+            def create(W)
+
+            def back(wx):      #Pass the window, destroy it then create a new one.
+                wx.destroy()   #This will make sure there is only one comment/tab at a timne
+                main()
+
+When trying to calculate soemthing you have to take the values in the object
+e.g. weight =50
+You take the VALUE (50) in the object (Weight)
+pass the object,extract the values
+
+Using "get()" is useful because you pass the object, get the value and do the calculations
+note -  calculations must be a vlue as you cannot multiply an object.
+
+To use a messagebox you have to import it
+
+Print in tkinter is not allowed in a procedure, it s only used for testing
+Use message boxes
+e.g. messagebox.showinfo
+    message box.askquestions
