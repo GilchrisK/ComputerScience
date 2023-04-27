@@ -1,4 +1,4 @@
-harder version
+#harder version
 Values = int(input("Please Enter a Value: "))
 print("The factors of {0} are:")
 for i in range (1, Values + 1):
@@ -16,6 +16,4 @@ for i in range(1, x+1):
         print(i)
 
 
-for i in range({i[0]}):
-
-#ihybiyuyty
+# for i in range({i[0]}):

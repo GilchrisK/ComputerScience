@@ -1,0 +1,47 @@
+1. Validation
+
+In the Computing Project in Teams look at the validation section and read everything in it.
+This will give you ALL the fundamentals for Validation
+#
+#
+#
+2. Names of identifiers
+
+Remember to use name your files correctly
+e.g. word1_word2
+        hello_world
+
+        txt_customer
+        lst_customer
+        tbl_customer
+#
+#
+#
+#
+3. Comments & Organisation
+
+
+You need to common on the purpose of each function and comment on the purpose of each file so you know what they do.
+
+~ RECOMMENDED LAYOUT AT THE START OF EACH PROGRAM ~
+#########################################################################################################
+# Name:
+# Purpose of this module:
+# Bugs or a note: e.g. "______" is not working
+                        # "____" is not finished
+# date:
+#########################################################################################################
+#
+#
+#
+
+4. Error Trapping
+
+>>>
+def godknows():
+    try:
+        #write code
+
+    except:
+        #error message
+<<<

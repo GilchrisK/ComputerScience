@@ -7,7 +7,7 @@ def binarySearch(items,search_item):
 
     found = False
     first = 0
-    last = len(items)-1
+    last = len(items)-1 #
 
     while first <+last and found == False:
         midpoint=(first+last)//2
@@ -47,3 +47,6 @@ def binarySearch(items,search_item):
 #         print("Item found at position", midpoint)
 #     else:
 #         print("Item not found")
+
+print("hello")
+

@@ -7,3 +7,5 @@ xlab = "Number"
 ylab = "Letter"
 tval= "AAAAAAAAAAAAAAAA"
 GeneralPlot.plotIt(xval,yval,xlab,ylab,tval)
+
+print("hello")
