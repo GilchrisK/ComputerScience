@@ -1,4 +1,7 @@
+import sqlite3
+import tkinter.messagebox
 from tkinter import *
+import tkinter as tk
 from tkinter import ttk #module that contains several different widgets such as the notebook widget
 
 
@@ -16,6 +19,8 @@ def starter_page():
     starter_Window.config(bg="#bad7e7",padx=100,pady=150,relief=SUNKEN)
     #bad7e7
 
+
+
     global notebook
     notebook = ttk.Notebook(starter_Window) #A widget that manages a collection of windows/displays
 
@@ -29,7 +34,7 @@ def starter_page():
     notebook.add(login_tab, text="Log in")
     notebook.add(guest_tab, text="Guest")
     notebook.pack()  #This will expand to fill any space
-
+    
     # notebook.config(height=notebook.size())               #fill= will fill space on the x and y-axis
 
     login_lbl1 = Label(login_tab, text="Welcome back!", font=("Comic Sans", 20), width=15, height=2, anchor='center', bg="light grey")
@@ -56,8 +61,39 @@ def starter_page():
     mainloop()
 ######################################
 
+# def connect_database(crt_emailEntry,crt_usernameEntry,crt_passwordEntry,crt_reTypePasswordEntry):
+#     crt_email = crt_emailEntry.get()
+#     crt_user = crt_usernameEntry.get()
+#     crt_pass = crt_passwordEntry.get()
+#     crt_reTypePass = crt_reTypePasswordEntry.get()
+#
+#     if crt_email == '' or crt_user == '' or crt_pass == '' or crt_reTypePass == '':
+#         print("hello")
+
+
+
+
+from tkinter import messagebox
 
 def admin_submit():
+
+    def connect_database():
+        if crt_emailEntry.get() == '' or crt_usernameEntry.get() == '' or crt_passwordEntry.get() == '' or crt_reTypePasswordEntry.get() == '':
+
+            messagebox.showerror("freg", "vrrwf")
+
+        elif crt_passwordEntry.get() != crt_reTypePasswordEntry.get():
+            messagebox.showerror("Error", "The passwords do not match!")
+        else:
+            try:
+                con = sqlite3.connect(host="local",user="root",password="1234")
+                mycursor = con.cursor()
+            except:
+                messagebox.showerror("Error","Database Connectivity Issue, Please Try Again")
+                return
+
+
+
     global adminMainPage
 
 
@@ -67,6 +103,7 @@ def admin_submit():
         print("The Admin username or password is incorrect...please try again")
 
     else:
+
         print("Opening admin main page")
         adminMainPage = Tk()
         adminMainPage.geometry("500x400")
@@ -92,38 +129,37 @@ def admin_submit():
         chng_acc_title.place(x=60,y=-350)
 
 
-        crt_userLbl = Label(createAccount_tab, text="Username",font=("Comic Sans",18))
-        crt_userLbl.place(x=55,y=200)
 
-        crt_userEntry = Entry(createAccount_tab, width="30")
-        crt_userEntry.place(x=200,y=205)
+        crt_emailLbl = Label(createAccount_tab, text="Email", font=("Comic Sans", 18))
+        crt_emailLbl.place(x=55, y=150)
+
+        crt_emailEntry = Entry(createAccount_tab, width="30")
+        crt_emailEntry.place(x=200, y=155)
+
+        crt_usernameLbl = Label(createAccount_tab, text="Username",font=("Comic Sans",18))
+        crt_usernameLbl.place(x=55,y=200)
+
+        crt_usernameEntry = Entry(createAccount_tab, width="30")
+        crt_usernameEntry.place(x=200,y=205)
 
         crt_passwordLbl = Label(createAccount_tab, text="Password",font=("Comic Sans",18))
         crt_passwordLbl.place(x=55,y=250)
 
-        crt_passEntry = Entry(createAccount_tab, width="30",show="*")
-        crt_passEntry.place(x=200,y=255)
+        crt_passwordEntry = Entry(createAccount_tab, width="30",show="*")
+        crt_passwordEntry.place(x=200,y=255)
 
         crt_reTypePasswordLbl = Label(createAccount_tab, text="Re-type password", font=("Comic Sans", 18))
         crt_reTypePasswordLbl.place(x=55, y=300)
 
-        crt_reTypePasswordLbl = Entry(createAccount_tab, width="30", show="*")
-        crt_reTypePasswordLbl.place(x=260, y=305)
+        crt_reTypePasswordEntry = Entry(createAccount_tab, width="30", show="*")
+        crt_reTypePasswordEntry.place(x=260, y=305)
 
-        crt_submitButton = Button(createAccount_tab, text="Login", width=5, font=("Comic sans", 10))
+        crt_submitButton = Button(createAccount_tab, text="Login", width=5, font=("Comic sans", 10),command=connect_database)
         crt_submitButton.place(x=200,y=350)
-
-
-        # backButton = Button(adminMainPage, text="Back", command=back)
-        # backButton.grid(row=4, column=0, sticky="SNEW", padx=10, pady=10)
-
-
 
 ################################
 def switch_signUp():
     notebook.select(tab_id=guest_tab)
-
-
 
 #################################
 def studentPage(y):
@@ -188,3 +224,4 @@ def adminPage(x):
 
 
 starter_page()
+
