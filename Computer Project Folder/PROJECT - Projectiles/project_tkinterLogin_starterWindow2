@@ -80,8 +80,15 @@ from tkinter import messagebox
 
 def admin_submit():
     def connect_database(a,b,c,d):
-        print(a,b,c,d)
-
+        if a == '' or b == '' or c == '' or d == '':
+            messagebox.showerror("Error", "All fields must be completed")
+        elif c != d:
+            print("Passwords do not match")
+            messagebox.showerror("Error","Passwords do not match")
+        # from project_email_validation import validate_studentEmail
+        # validate_studentEmail()
+        from project_password_validation import isValidPassword
+        isValidPassword(password=c)
 
 
 
@@ -213,4 +220,3 @@ def adminPage(x):
 
 
 starter_page()
-
