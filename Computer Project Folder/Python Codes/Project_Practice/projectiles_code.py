@@ -36,11 +36,10 @@ def main() -> None:
 
 
     screen = projectile_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Angle: 0 Speed: 200")
-    ground_surface = pygame.image.load("pixel_Background_cropped.png").convert_alpha()
-    # ground_surface = pygame.draw.rect(screen, ('Dark Green'), (0, 575, 1200, 170))
+    ground_surface = pygame.image.load("grass_surface.png").convert_alpha()
+
     background = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
     background.fill((222, 237, 244))
-    grass_surface = pygame.draw.rect(screen, ('Dark Green'), (0, 575, 1200, 170))
     projectile = pygame.image.load("cannon ball.png")
     projectile = projectile.convert_alpha()
     flag = pygame.image.load("flag.png")
@@ -62,9 +61,9 @@ def main() -> None:
             # Process keys to adjust angle and shoot.
             elif e.type == pygame.KEYDOWN and not shoot:
                 if e.__dict__["key"] == pygame.K_UP and angle < 90:
-                    angle += 10
+                    angle += 5
                 elif e.__dict__["key"] == pygame.K_DOWN and angle >= 10:
-                    angle -= 10
+                    angle -= 5
                 elif e.__dict__["key"] == pygame.K_RIGHT:
                     speed += 10
                 elif e.__dict__["key"] == pygame.K_LEFT and speed >= 10:
@@ -96,8 +95,8 @@ def main() -> None:
         pygame.display.set_caption("Angle: " + str(angle) + " Speed: " + str(speed))
         screen.blit(background, (0, 0))
         screen.blit(projectile, (x, y))
-        screen.blit(grass_surface,)
-        screen.blit(ground_surface,(0,700))
+        # screen.blit(grass_surface,)
+        # screen.blit(ground_surface,(0,700))
         pygame.display.flip()
 
     pygame.quit()
