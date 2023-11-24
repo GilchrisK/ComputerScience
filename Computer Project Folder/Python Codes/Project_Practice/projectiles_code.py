@@ -37,14 +37,15 @@ def main() -> None:
 
     screen = projectile_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Angle: 0 Speed: 200")
     ground_surface = pygame.image.load("grass_surface.png").convert_alpha()
-
+    ground_x = 0
+    ground_y = screen.get_height() - 150
     background = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
     background.fill((222, 237, 244))
     projectile = pygame.image.load("cannon ball.png")
     projectile = projectile.convert_alpha()
     flag = pygame.image.load("flag.png")
     flag = flag.convert_alpha()
-    start_y = screen.get_height() - projectile.get_height()
+    start_y = screen.get_height() - ground_surface.get_height() - projectile.get_height()
     y = start_y
     clock: pygame.time.Clock = pygame.time.Clock()
 
@@ -95,8 +96,7 @@ def main() -> None:
         pygame.display.set_caption("Angle: " + str(angle) + " Speed: " + str(speed))
         screen.blit(background, (0, 0))
         screen.blit(projectile, (x, y))
-        # screen.blit(grass_surface,)
-        # screen.blit(ground_surface,(0,700))
+        screen.blit(ground_surface,(ground_x,ground_y))
         pygame.display.flip()
 
     pygame.quit()
