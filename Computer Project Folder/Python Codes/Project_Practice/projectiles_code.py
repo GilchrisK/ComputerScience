@@ -1,4 +1,3 @@
-"""Projectile demonstration."""
 
 # Imports and initialize pygame.
 import math
@@ -83,11 +82,11 @@ def main() -> None:
                  - (math.sin(math.radians(angle)) * speed * time)
                  + .5 * 72 * time ** 2)
             # Check if it's hit the "ground"
-            if y + projectile.get_height() >= screen.get_height():
+            if y + projectile.get_height() >= screen.get_height() - ground_surface.get_height() :
                 time = 0
                 shoot = False
                 # Put a flag where it landed
-                background.blit(flag, (x, screen.get_height() - flag.get_height()))
+                background.blit(flag, (x, screen.get_height() - ground_surface.get_height() - flag.get_height()))
                 # Reset projectile to start
                 x = start_x
                 y = start_y
