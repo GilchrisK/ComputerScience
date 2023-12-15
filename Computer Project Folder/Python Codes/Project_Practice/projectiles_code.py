@@ -24,7 +24,7 @@ def main() -> None:
     projectile: pygame.Surface
     flag: pygame.Surface
     ground_surface: pygame.Surface
-    start_x = 0
+    start_x = 10
     start_y = -100
     x = start_x
     y = start_y
