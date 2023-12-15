@@ -34,6 +34,8 @@ def main() -> None:
     speed = 100
 
 
+
+
     screen = projectile_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Angle: 0 Speed: 200")
     ground_surface = pygame.image.load("grass_surface.png").convert_alpha()
     ground_x = 0
@@ -86,7 +88,7 @@ def main() -> None:
                 time = 0
                 shoot = False
                 # Put a flag where it landed
-                background.blit(flag, (x, screen.get_height() - ground_surface.get_height() - flag.get_height()))
+                background.blit(flag, (x, screen.get_height() - ground_surface.get_height() - flag.get_height() + 4 )) # Without the +4 the flag slightly levitates above the ground
                 # Reset projectile to start
                 x = start_x
                 y = start_y
