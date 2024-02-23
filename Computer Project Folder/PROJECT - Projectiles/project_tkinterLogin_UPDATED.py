@@ -1,5 +1,4 @@
 import project_validation
-# from project_validation import *
 import sqlite3
 import tkinter.messagebox
 from tkinter import *
@@ -26,13 +25,9 @@ def starter_page():
     starter_Window.geometry("1000x800")
     starter_Window.minsize(1000, 800)
     starter_Window.config(bg="#bad7e7", padx=100, pady=150, relief=SUNKEN)
-    # bad7e7
 
     global notebook
     notebook = ttk.Notebook(starter_Window)  # A widget that manages a collection of windows/displays
-
-    # frame = Frame(notebook,relief=SUNKEN) #With 'bd=' you can vary the size of the border
-    # frame.place(x=100,y=0)
 
     global guest_tab
     login_tab = Frame(notebook, padx=100)  # This will be a new frame for tab1
@@ -73,63 +68,41 @@ def starter_page():
 
 ######################################
 
-# def connect_database(crt_emailEntry,crt_usernameEntry,crt_passwordEntry,crt_reTypePasswordEntry):
-#     crt_email = crt_emailEntry.get()
-#     crt_user = crt_usernameEntry.get()
-#     crt_pass = crt_passwordEntry.get()
-#     crt_reTypePass = crt_reTypePasswordEntry.get()
-#
-#     if crt_email == '' or crt_user == '' or crt_pass == '' or crt_reTypePass == '':
-#         print("hello")
-
-
 from tkinter import messagebox
 
 
 def admin_submit():
-    def connect_database(a,b,c,d):
-        print(a,b,c,d)
+    def connect_database(a, b, c, d):
         if a == '' or b == '' or c == '' or d == '':
             messagebox.showerror("Error", "All fields must be completed")
         elif c != d:
-            print("Passwords do not match")
             messagebox.showerror("Error","Passwords do not match")
-        # flagA = project_validation.validate_studentEmail(a)
+        flagA = project_validation.validate_studentEmail(a)
         flagB = project_validation.isValidUsername(b)
         flagC = project_validation.isValidPassword(c)
-        if flagB and flagC:
-        #if flagA and flagB and flagC:
-            print("Perfect")
+        if flagA and flagB and flagC:
             from project_saveData import saveMyData
 
             saveMyData(a,b,c)
         else:
             messagebox.showerror("Error","Invalid information")
 
-
-
-        # from project_email_validation import validate_studentEmail
-        # validate_studentEmail()
-        # from project_password_validation import isValidPassword
-        # isValidPassword(password=c)
-
-
-
     global adminMainPage
 
     User = adminEntry_Username.get()
     Pass = adminEntry_Password.get()
-    if User != "a" or Pass != "a":
-        print("The Admin username or password is incorrect...please try again")
+    if User == '' or Pass == '':
+        messagebox.showerror("Error", "All fields must be completed")
+    elif User != "Teacher" or Pass != "Projectiles123":
+        messagebox.showerror("Error", "Invalid! The Admin username or password is incorrect")
 
     else:
 
-        print("Opening admin main page")
+        #Main page is now opened
         adminMainPage = Tk()
         adminMainPage.geometry("500x400")
         adminMainPage.minsize(800, 650)
         adminWindow.destroy()
-        # adminMainPage.config(bg="#bad7e7", pady=20)
         notebook = ttk.Notebook(adminMainPage, width=600,
                                 height=600)  # A widget that manages a collection of windows/displays
 
@@ -173,7 +146,7 @@ def admin_submit():
         crt_reTypePasswordEntry = Entry(createAccount_tab, width="30", show="*")
         crt_reTypePasswordEntry.place(x=260, y=305)
 
-        crt_submitButton = Button(createAccount_tab, text="Login", width=5, font=("Comic sans", 10),
+        crt_submitButton = Button(createAccount_tab, text="Create", width=5, font=("Comic sans", 10),
                                   command=lambda: connect_database(crt_emailEntry.get(),
                                                                    crt_usernameEntry.get(),
                                                                    crt_passwordEntry.get(),
