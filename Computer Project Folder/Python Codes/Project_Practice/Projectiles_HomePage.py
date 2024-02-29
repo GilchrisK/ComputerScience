@@ -9,18 +9,18 @@ def openFile(): #FINISH CODE FOR OPENING A FILE AND PASTE IT HERE
 
 
 
-# def saveFile(): #SAVES A FILE
-#     print("File has been saved!")
-#     file = filedialog.asksaveasfile(initialdir="C:\\Users\\Gilch\\OneDrive\\Pycharm",#This will create it straight into your pycharm folder
-#                                     defaultextension=".txt",
-#                                     filetypes=[
-#                                         ("Text file",".txt"),
-#                                         ("HTML file", ".html"),
-#                                         ("All files", ".*")
-#                                     ])
-#     filetext = str(text.get(1.0,END)) #stores writing from "text" into a variable
-#     file.write(filetext)
-#     file.close()
+def saveFile(): #SAVES A FILE
+    print("File has been saved!")
+    file = filedialog.asksaveasfile(initialdir="C:\\Users\\Gilch\\OneDrive\\Pycharm",#This will create it straight into your pycharm folder
+                                    defaultextension=".txt",
+                                    filetypes=[
+                                        ("Text file",".txt"),
+                                        ("HTML file", ".html"),
+                                        ("All files", ".*")
+                                    ])
+    filetext = str(text.get(1.0,END)) #stores writing from "text" into a variable
+    file.write(filetext)
+    file.close()
 
 def cut(): #FINISH CODE FOR OPENING A FILE AND PASTE IT HERE
     print("You cut some text!")
@@ -34,16 +34,17 @@ def make_window():
 
 
 def openQuiz():
-    from projectileQuiz import projectileQuiz
-    projectileQuiz()
-    pass
+    window.destroy()
+    from projectileQuiz import show_question
+
+
 
 window = Tk()
 window.geometry("800x500")
 
-#
-# text = Text(window) #pack that allows you to write
-# text.pack()
+
+text = Text(window, height=10, width=10) #pack that allows you to write
+text.pack()
 #
 menubar = Menu(window) #creates a menu bar
 window.config(menu=menubar)
@@ -54,8 +55,8 @@ menubar.add_cascade(label="File",menu=fileMenu) # cascade allows the drop-down m
 
 fileMenu.add_command(label="Open",command=openFile)
 fileMenu.add_separator() # this adds a line to separate the file commands
-# fileMenu.add_command(label="Save",command=saveFile)
-# fileMenu.add_separator()
+fileMenu.add_command(label="Save",command=saveFile)
+fileMenu.add_separator()
 fileMenu.add_command(label="Exit",command=quit)
 fileMenu.add_separator()
 
