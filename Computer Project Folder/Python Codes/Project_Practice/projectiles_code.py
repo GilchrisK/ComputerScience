@@ -29,8 +29,6 @@ def main() -> None:
     shoot = False
     angle = 0
     speed = 100
-
-
     graph_icon: pygame.Surface
 
 
@@ -39,8 +37,8 @@ def main() -> None:
     ground_surface = pygame.image.load("grass_surface.png").convert_alpha()
     ground_x = 0
     ground_y = screen.get_height() - 150
-    graph_x = screen.get_height() - 300
-    graph_y = screen.get_height() - 300
+    graph_x = screen.get_height() + 300
+    graph_y = screen.get_height() - 780
     background = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
     background.fill((222, 237, 244))
     projectile = pygame.image.load("cannon ball.png")
