@@ -29,6 +29,7 @@ def main() -> None:
     shoot = False
     angle = 0
     speed = 100
+    time = 0
     graph_icon2: pygame.Surface
     moving = False
 
@@ -39,7 +40,7 @@ def main() -> None:
 
 
 
-    screen = projectile_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Angle: 0 Speed: 200")
+    screen = projectile_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Angle: 0 Speed: 200 Time: 0")
     bigHorizontal_ruler_surface = pygame.image.load("x_ruler3.png").convert_alpha()
     ground_x = 0
     ground_y = screen.get_height() - 150
@@ -80,8 +81,8 @@ def main() -> None:
                     angle += 5
                 elif e.__dict__["key"] == pygame.K_DOWN and angle >= 10:
                     angle -= 5
-                elif e.__dict__["key"] == pygame.K_RIGHT:
-                    speed += 10
+                elif e.__dict__["key"] == pygame.K_RIGHT and speed <=280:
+                    speed +=5
                 elif e.__dict__["key"] == pygame.K_LEFT and speed >= 10:
                     speed -= 10
                 elif e.__dict__["key"] == pygame.K_SPACE:
@@ -92,8 +93,9 @@ def main() -> None:
 
             if e.type == pygame.MOUSEBUTTONDOWN:  # Prints output when you hold the mouse down
                 background.blit((bigHorizontal_ruler_surface), (bigHorizontal_ruler))
+                if e.type == pygame.MOUSEBUTTONDOWN:
 
-                print("yes")
+                    print("yes")
         #         for e in pygame.event.get():
         #             if e.tye == pygame.MOUSEBUTTONUP:
         #                 moving = False
@@ -105,17 +107,11 @@ def main() -> None:
         # pygame.display.update()
 
 
-
-
-
-
-
-
-
         # Move the projectile through the air
         if shoot:
             # Increment time
-            time += 1 / 15
+            time += 1/15
+
 
             # Calculate location
             x = (start_x
@@ -135,7 +131,7 @@ def main() -> None:
 
 
         # Draw to the screen and show.
-        pygame.display.set_caption("Angle: " + str(angle) + " Speed: " + str(speed))
+        pygame.display.set_caption("Angle: " + str(angle) + " Speed: " + str(speed) + " Time: " + str(time))
         screen.blit(background, (0, 0))
         screen.blit(projectile, (x, y))
         screen.blit(ground_surface,(ground_x,ground_y))
