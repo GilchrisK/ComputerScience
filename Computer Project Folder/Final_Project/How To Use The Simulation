@@ -4,3 +4,6 @@ Admin/Teacher details:
     Username = Teacher
     Password = Projectiles123
 
+Student Email: Must be of a correct format (@gmail.com, @icloud.com, @yahoo.com, @outlook.com), length (13-35), contain upper and lower case
+Student Username: Must be of correct length (4-15)
+Student Password: Must be of correct length (5-15), contain upper and lower case, a number and a special character.
